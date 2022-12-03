@@ -1,0 +1,14 @@
+.tlo_logowanie{
+
+    -fx-background-color: #F0DE96;
+}
+.tlo_logowanie2{
+
+    -fx-background-color: #AF8F71;
+
+}
+.przycisk_logowanie{
+    -fx-effect: dropshadow( one-pass-box , black , 8 , 0.0 , 2 , 0 );
+    -fx-border-color: black;
+    -fx-background-color: darkgrey;
+}
