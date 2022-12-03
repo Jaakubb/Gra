@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -42,13 +43,7 @@ public class GraController {
     public void init(String klasa) {
         gracz = new Gracz(klasa);
 
-        Random r = new Random();
-        int obrlos = 100 + r.nextInt(200);
-        int hplos = 400 + r.nextInt(1500);
 
-        data.add(new Przeciwnik("ork", hplos, obrlos));
-        data.add(new Przeciwnik("ork", 500, 200));
-        data.add(new Przeciwnik("troll", 1200, 90));
         System.out.println(tabela);
         tabela.itemsProperty().setValue(data);
         nazwa_p.setCellValueFactory(
@@ -61,12 +56,22 @@ public class GraController {
                 new PropertyValueFactory<Przeciwnik, Integer>("obr_p")
         );
 
-
     }
+    @FXML
+    private Label pos_id();
+    pos_id.setText
+
+
+
     @FXML
     private void wylosuj(){
         data.clear();
-        Random rand = new Random();
+        data.add(new Przeciwnik());
+        data.add(new Przeciwnik());
+        data.add(new Przeciwnik());
+        data.add(new Przeciwnik());
+        data.add(new Przeciwnik());
+
 
     }
 
