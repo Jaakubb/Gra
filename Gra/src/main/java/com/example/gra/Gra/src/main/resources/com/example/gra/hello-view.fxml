@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gra.HelloController">
+   <center>
+      <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="tlo_logowanie">
+               <children>
+                  <ImageView fitHeight="202.0" fitWidth="210.0" layoutX="21.0" pickOnBounds="true" preserveRatio="true" styleClass="image">
+                     <image>
+                        <Image url="@../../../image/logo2.jpg" />
+                     </image>
+                  </ImageView>
+               </children>
+               <padding>
+                  <Insets left="10.0" right="10.0" />
+               </padding>
+            </AnchorPane>
+            <VBox prefHeight="400.0" prefWidth="358.0" spacing="10.0" styleClass="tlo_logowanie2">
+               <children>
+                  <Label fx:id="imie" text="Imię:">
+                     <VBox.margin>
+                        <Insets left="100.0" top="20.0" />
+                     </VBox.margin>
+                  </Label>
+                  <TextField />
+                  <Label fx:id="klasa" text="Klasa:">
+                     <VBox.margin>
+                        <Insets left="100.0" />
+                     </VBox.margin>
+                  </Label>
+                  <ComboBox fx:id="tabela_class" prefHeight="27.0" prefWidth="106.0" styleClass="przycisk_logowanie">
+                     <items>
+                        <FXCollections fx:factory="observableArrayList">
+                           <String fx:value="Mag" />
+                           <String fx:value="Wojownik" />
+                        </FXCollections>
+                     </items>
+                  </ComboBox>
+                  <Button mnemonicParsing="false" onAction="#graj" styleClass="przycisk_logowanie" text="Graj">
+                     <VBox.margin>
+                        <Insets left="100.0" top="20.0" />
+                     </VBox.margin>
+                  </Button>
+                  <Button fx:id="wczytaj" mnemonicParsing="false" styleClass="przycisk_logowanie" text="Wczytaj">
+                     <VBox.margin>
+                        <Insets left="100.0" top="20.0" />
+                     </VBox.margin>
+                  </Button>
+                  <Button fx:id="zamknij" mnemonicParsing="false" onAction="#wyjscie" styleClass="przycisk_logowanie" text="Wyjście">
+                     <VBox.margin>
+                        <Insets left="100.0" top="20.0" />
+                     </VBox.margin>
+                  </Button>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+   </center>
+</BorderPane>
