@@ -7,11 +7,15 @@
 <AnchorPane prefHeight="356.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gra.AtakConntroller">
    <children>
       <Label layoutX="96.0" layoutY="93.0" text="hp:" />
-      <Label layoutX="152.0" layoutY="93.0" text="Label" />
-      <Label layoutX="96.0" layoutY="117.0" text="mana:" />
-      <Label layoutX="152.0" layoutY="117.0" text="Label" />
-      <Button layoutX="87.0" layoutY="279.0" mnemonicParsing="false" text="Walcz" />
-      <Button layoutX="180.0" layoutY="279.0" mnemonicParsing="false" text="Lecz" />
-      <Button layoutX="257.0" layoutY="279.0" mnemonicParsing="false" text="Button" />
+      <Label fx:id="prz_hp" layoutX="152.0" layoutY="93.0" />
+      <Button layoutX="87.0" layoutY="279.0" mnemonicParsing="false" onAction="#walcz" text="Walcz" />
+      <Button layoutX="180.0" layoutY="279.0" mnemonicParsing="false" onAction="#lecz" text="Lecz" />
+      <Button layoutX="257.0" layoutY="279.0" mnemonicParsing="false" onAction="#powrot" text="Powrót" />
+      <Label layoutX="96.0" layoutY="55.0" text="Przeciwnik" />
+      <Label layoutX="93.0" layoutY="170.0" text="Postać" />
+      <Label layoutX="96.0" layoutY="207.0" text="hp:" />
+      <Label layoutX="97.0" layoutY="236.0" text="mana:" />
+      <Label fx:id="pos_hp2" layoutX="152.0" layoutY="207.0" text="Label" />
+      <Label fx:id="pos_mana2" layoutX="152.0" layoutY="236.0" text="Label" />
    </children>
 </AnchorPane>

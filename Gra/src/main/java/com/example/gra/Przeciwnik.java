@@ -35,8 +35,8 @@ public class Przeciwnik {
     }
     public Przeciwnik(){
         Random r = new Random();
-        hp_p = 100 + r.nextInt(200);
-        obr_p = 400 + r.nextInt(1500);
+        hp_p = 400 + r.nextInt(1500);
+        obr_p = 100 + r.nextInt(200);
 
         ArrayList<String> list = new ArrayList<>();
         list.add("ork");

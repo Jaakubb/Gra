@@ -9,8 +9,11 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
-
+import org.json.JSONObject;
+import java.io.FileReader;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 
 public class HelloController {
     @FXML
@@ -39,5 +42,32 @@ public class HelloController {
         Node closeButton = null;
         Stage stage = (Stage) zamknij.getScene().getWindow();
         stage.close();
+    }
+
+    @FXML
+    private void wczytaj(ActionEvent event) throws IOException {
+        String content = Files.readString(Path.of("gracz.json"));
+        JSONObject a = new JSONObject(content);
+
+            String klasa = (String) a.get("klasa");
+            int obr= (int) a.get("obr");
+            int hp= (int) a.get("hp");
+            int mana= (int) a.get("mana");
+            int lvl = (int) a.get("lvl");
+            int exp = (int) a.get("exp");
+
+        Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        primaryStage.close();
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("gra.fxml"));
+        Stage nextStage = new Stage();
+        Scene scene = new Scene(fxmlLoader.load(), 600, 400);
+        scene.getStylesheets().add(getClass().getResource("aplikacja.css").toExternalForm());
+
+        nextStage.setTitle("Gra");
+        nextStage.setScene(scene);
+        nextStage.show();
+        GraController graController= fxmlLoader.getController();
+
+        graController.init(klasa,obr,hp,mana,lvl,exp);
     }
 }

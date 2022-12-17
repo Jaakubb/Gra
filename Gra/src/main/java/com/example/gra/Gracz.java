@@ -1,7 +1,7 @@
 package com.example.gra;
 
 public class Gracz {
-
+    public String klasa;
     public int hp;
     public int obr;
     public int mana;
@@ -40,6 +40,7 @@ public class Gracz {
         this.lvl = lvl;
     }
     Gracz(String klasa){
+        this.klasa=klasa;
         switch(klasa){
             case "Mag":
                 this.hp = 1000;
@@ -67,5 +68,15 @@ public class Gracz {
                 this.lvl= 0;
                 break;
         }
+    }
+    Gracz(String klasa, int obr, int hp, int mana, int lvl, int exp){
+        this.klasa=klasa;
+        this.obr=obr;
+        this.hp=hp;
+        this.mana=mana;
+        this.lvl=lvl;
+        this.exp=exp;
+
+
     }
 }

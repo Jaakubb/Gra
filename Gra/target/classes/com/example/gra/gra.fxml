@@ -5,6 +5,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
@@ -14,7 +15,7 @@
       <HBox prefHeight="100.0" prefWidth="555.0" BorderPane.alignment="CENTER">
          <children>
             <Label text="exp:" />
-            <Label text="Label">
+            <Label fx:id="pos_exp" text="Label">
                <padding>
                   <Insets left="10.0" />
                </padding>
@@ -24,7 +25,7 @@
                   <Insets left="50.0" />
                </padding>
             </Label>
-            <Label text="Label">
+            <Label fx:id="pos_hp" text="Label">
                <padding>
                   <Insets left="10.0" />
                </padding>
@@ -44,11 +45,16 @@
                   <Insets left="50.0" />
                </HBox.margin>
             </Button>
-            <Button mnemonicParsing="false" text="Zapisz">
+            <Button mnemonicParsing="false" onAction="#zapisz" text="Zapisz">
                <HBox.margin>
                   <Insets left="50.0" />
                </HBox.margin>
             </Button>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <Label fx:id="nie_zyjesz" layoutX="158.0" layoutY="32.0" />
+               </children>
+            </AnchorPane>
          </children>
          <padding>
             <Insets left="50.0" top="20.0" />
@@ -95,18 +101,18 @@
             </VBox>
             <VBox prefHeight="200.0" prefWidth="100.0">
                <children>
-                  <Label text="Label" />
-                  <Label text="Label">
+                  <Label fx:id="pos_id" text="Label" />
+                  <Label fx:id="pos_obr" text="Label">
                      <padding>
                         <Insets top="20.0" />
                      </padding>
                   </Label>
-                  <Label text="Label">
+                  <Label fx:id="pos_mana" text="Label">
                      <padding>
                         <Insets top="20.0" />
                      </padding>
                   </Label>
-                  <Label text="Label">
+                  <Label fx:id="pos_lvl" text="Label">
                      <padding>
                         <Insets top="20.0" />
                      </padding>
