@@ -12,12 +12,16 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.*;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.ProtocolException;
+import java.net.URL;
+import java.nio.charset.StandardCharsets;
 import java.util.Random;
 
 public class GraController {
@@ -47,10 +51,10 @@ public class GraController {
         AtakConntroller atakController= fxmlLoader.getController();
         atakController.init(gracz,tabela.getSelectionModel().getSelectedItem());
     }
-    public void init(String klasa) {
-        this.gracz = new Gracz(klasa);
-
-
+    public void init(String klasa,String nazwa) {
+        this.gracz = new Gracz(klasa, nazwa);
+System.out.println("debug:"+nazwa);
+        System.out.println("debug:"+this.gracz.nazwa);
         System.out.println(tabela);
         tabela.itemsProperty().setValue(data);
         nazwa_p.setCellValueFactory(
@@ -102,8 +106,8 @@ public class GraController {
             nie_zyjesz.setText("Nie żyjesz");
         }
     }
-    public void init(String klasa, int obr, int hp, int mana, int lvl, int exp){
-        this.gracz = new Gracz(klasa,obr,hp,mana,lvl,exp);
+    public void init(String klasa, String nazwa, int obr, int hp, int mana, int lvl, int exp){
+        this.gracz = new Gracz(klasa,nazwa,obr,hp,mana,lvl,exp);
 
 
         System.out.println(tabela);
@@ -161,21 +165,25 @@ public class GraController {
 
     }
 
+
     @FXML
-    private void zapisz(){
+    private void zapisz() throws IOException {
 
         //String path = "/gracz.json";
+
+
         JSONObject json = new JSONObject();
         try {
-            json.put("hp", gracz.hp);
-            json.put("mana", gracz.mana);
-            json.put("lvl",gracz.lvl);
-            json.put("obr", gracz.obr);
-            json.put("exp",gracz.exp);
-            json.put("klasa",gracz.klasa);
+            json.put("hp", this.gracz.hp);
+            json.put("mana", this.gracz.mana);
+            json.put("lvl", this.gracz.lvl);
+            json.put("obr", this.gracz.obr);
+            json.put("exp", this.gracz.exp);
+            json.put("klasa", this.gracz.klasa);
+            json.put("nazwa", this.gracz.nazwa);
 
-        }
-        catch (JSONException e) {
+
+        } catch (JSONException e) {
             e.printStackTrace();
         }
         System.out.println(json);
@@ -184,6 +192,42 @@ public class GraController {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        System.out.println("debug:" + this.gracz.nazwa);
+
+        String dane_do_wyslania = json.toString();
+        byte[] postData = dane_do_wyslania.getBytes(StandardCharsets.UTF_8);
+        String url = "http://localhost:8080/hello";
+        HttpURLConnection con = null;
+        try {
+            URL obj = new URL(url);
+            con = (HttpURLConnection) obj.openConnection();
+            con.setRequestMethod("POST");
+            con.setRequestProperty("User-Agent", "test");
+            con.setRequestProperty("Content-Type", "application/json");
+            con.setDoOutput(true);
+            try (DataOutputStream wr = new DataOutputStream(con.getOutputStream())) {
+
+                wr.write(postData);
+            }
+            StringBuilder content;
+
+            try (BufferedReader br = new BufferedReader(
+                    new InputStreamReader(con.getInputStream(), "UTF-8"))) {
+                String line;
+                content = new StringBuilder();
+
+                while ((line = br.readLine()) != null) {
+                    System.out.println(br);
+                    content.append(line);
+                    System.out.println(line);
+                    content.append(System.lineSeparator());
+                }
+            }
+            System.out.println(content.toString());
+
+        } finally {//con.disconnect();
+        }
+
 
     }
 }

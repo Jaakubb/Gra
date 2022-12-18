@@ -7,6 +7,15 @@ public class Gracz {
     public int mana;
     public int exp;
     public int lvl;
+    public String nazwa;
+
+    public String getNazwa() {
+        return nazwa;
+    }
+
+    public void setNazwa(String nazwa) {
+        this.nazwa = nazwa;
+    }
 
     public int getHp() {
         return hp;
@@ -39,8 +48,9 @@ public class Gracz {
     public void setLvl(int lvl) {
         this.lvl = lvl;
     }
-    Gracz(String klasa){
+    Gracz(String klasa, String nazwa){
         this.klasa=klasa;
+        this.nazwa=nazwa;
         switch(klasa){
             case "Mag":
                 this.hp = 1000;
@@ -69,13 +79,14 @@ public class Gracz {
                 break;
         }
     }
-    Gracz(String klasa, int obr, int hp, int mana, int lvl, int exp){
+    Gracz(String klasa,String nazwa, int obr, int hp, int mana, int lvl, int exp){
         this.klasa=klasa;
         this.obr=obr;
         this.hp=hp;
         this.mana=mana;
         this.lvl=lvl;
         this.exp=exp;
+        this.nazwa=nazwa;
 
 
     }
